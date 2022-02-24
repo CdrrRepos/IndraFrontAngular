@@ -1,0 +1,251 @@
+<div class="content">
+
+    <mat-card>
+        <mat-card-title>Productos</mat-card-title>
+        <mat-card-subtitle>
+            <mat-tab-group mat-align-tabs="start">
+
+                <mat-tab label="Registro">
+                    <!-- Ingreso de datos -->
+                    <div class="row">
+                        <div class="col-2">
+                        </div>
+                        <div class="col-8">
+                            <br>
+                            <div class="row">Ingrese los siguientes datos para registrar un nuevo producto</div>
+                            <br>
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div class="col-5">
+                                    <mat-form-field>
+                                        <mat-label>Nombre</mat-label>
+                                        <input id="nombre" matInput [(ngModel)]="this.nombre" maxlength="100">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-5">
+                                    <mat-form-field>
+                                        <mat-label>Descripcion</mat-label>
+                                        <textarea id="descripcion" matInput [(ngModel)]="this.descripcion" maxlength="500"></textarea>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div class="col-5">
+                                    <mat-form-field>
+                                        <mat-label>Categoria</mat-label>
+                                        <input id="categoria" matInput [(ngModel)]="this.categoria" maxlength="100">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-5">
+                                    <mat-form-field>
+                                        <mat-label>Url Imagen</mat-label>
+                                        <input id="url" matInput [(ngModel)]="this.url" maxlength="500">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-3"></div>
+                                <div class="col-6">
+                                    <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
+                                </div>
+                                <div class="col-3"></div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Tabla de datos -->
+                    <div class="row">
+                        <div class="col-2">
+                        </div>
+                        <div class="col-8">
+                            <table id="tabla" mat-table [dataSource]="dataSource">
+
+                                <!-- id_Producto Column -->
+                                <ng-container matColumnDef="id_Producto">
+                                  <th mat-header-cell *matHeaderCellDef class="cabeza-tabla"> ID </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.id_Producto}} </td>
+                                </ng-container>
+                            
+                                <!-- Nombre Column -->
+                                <ng-container matColumnDef="nombre">
+                                  <th mat-header-cell *matHeaderCellDef class="cabeza-tabla"> NOMBRE </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                                </ng-container>
+                            
+                                <!-- Descripcion Column -->
+                                <ng-container matColumnDef="descripcion">
+                                  <th mat-header-cell *matHeaderCellDef class="cabeza-tabla"> DESCRIPCION </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+                                </ng-container>
+                            
+                                <!-- Categoria Column -->
+                                <ng-container matColumnDef="categoria">
+                                  <th mat-header-cell *matHeaderCellDef class="cabeza-tabla"> CATEGORIA </th>
+                                  <td mat-cell *matCellDef="let element">  {{element.categoria}} </td>
+                                </ng-container>
+                            
+                                <!-- Imagen_Url Column -->
+                                <ng-container matColumnDef="imagen_Url">
+                                  <th mat-header-cell *matHeaderCellDef class="cabeza-tabla"> IMAGEN </th>
+                                  <td mat-cell *matCellDef="let element"> <img src="{{element.imagen_Url}}" width="100px"> </td>
+                                </ng-container>
+                            
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                              </table>
+                            
+                              <mat-paginator #MatPaginator1="matPaginator" [pageSizeOptions]="[5, 10, 20]"
+                                             showFirstLastButtons 
+                                             aria-label="Select page of periodic elements">
+                              </mat-paginator>
+                        </div>
+                        <div class="col-2">
+                        </div>
+                    </div>
+                </mat-tab>
+
+
+                <mat-tab label="Busqueda">
+                    <!-- Actualizacion de datos -->
+                    <div class="row">
+                        <div class="col-2">
+                        </div>
+                        <div class="col-8">
+                            <br>
+                            <div class="row">Seleccione el producto y modifique los datos que desea cambiar</div>
+                            <br>
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div class="col-5">
+                                    <mat-form-field>
+                                        <mat-label>Nombre</mat-label>
+                                        <input id="nombre" matInput [(ngModel)]="this.nombreUp" maxlength="100">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-5">
+                                    <mat-form-field>
+                                        <mat-label>Descripcion</mat-label>
+                                        <textarea id="descripcion" matInput [(ngModel)]="this.descripcionUp" maxlength="500"></textarea>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div class="col-5">
+                                    <mat-form-field>
+                                        <mat-label>Categoria</mat-label>
+                                        <input id="categoria" matInput [(ngModel)]="this.categoriaUp" maxlength="100">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-5">
+                                    <mat-form-field>
+                                        <mat-label>Url Imagen</mat-label>
+                                        <input id="url" matInput [(ngModel)]="this.urlUp" maxlength="500">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-3"></div>
+                                <div class="col-6">
+                                    <button mat-raised-button color="primary" (click)="actualizar()">Actualizar</button>
+                                </div>
+                                <div class="col-3"></div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div class="col-5">
+                                    <mat-form-field>
+                                        <mat-label>Filtrar datos por cualquier coincidencia</mat-label>
+                                        <input id="url" matInput maxlength="500" (keyup)="obtenerDatosFiltro($event)">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-6"></div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Tabla de datos -->
+                    <div class="row">
+                        <div class="col-2">
+                        </div>
+                        <div class="col-8">
+                            <table id="tablaBusqueda" mat-table [dataSource]="dataSearchSource">
+
+                                <!-- id_Producto Column -->
+                                <ng-container matColumnDef="id_Producto">
+                                  <th mat-header-cell *matHeaderCellDef class="cabeza-tabla"> ID </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.id_Producto}} </td>
+                                </ng-container>
+                            
+                                <!-- Nombre Column -->
+                                <ng-container matColumnDef="nombre">
+                                  <th mat-header-cell *matHeaderCellDef class="cabeza-tabla"> NOMBRE </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                                </ng-container>
+                            
+                                <!-- Descripcion Column -->
+                                <ng-container matColumnDef="descripcion">
+                                  <th mat-header-cell *matHeaderCellDef class="cabeza-tabla"> DESCRIPCION </th>
+                                  <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+                                </ng-container>
+                            
+                                <!-- Categoria Column -->
+                                <ng-container matColumnDef="categoria">
+                                  <th mat-header-cell *matHeaderCellDef class="cabeza-tabla"> CATEGORIA </th>
+                                  <td mat-cell *matCellDef="let element">  {{element.categoria}} </td>
+                                </ng-container>
+                            
+                                <!-- Imagen_Url Column -->
+                                <ng-container matColumnDef="imagen_Url">
+                                  <th mat-header-cell *matHeaderCellDef class="cabeza-tabla"> IMAGEN </th>
+                                  <td mat-cell *matCellDef="let element"> <img src="{{element.imagen_Url}}" width="100px"> </td>
+                                </ng-container>
+                            
+                                <!-- AccionId Column -->
+                                <ng-container matColumnDef="AccionId">
+                                  <th mat-header-cell *matHeaderCellDef class="cabeza-tabla"> SELECCIONAR </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <button mat-raised-button color="primary" (click)="llenarCampos(element)">Seleecionar</button>
+                                        <button mat-raised-button color="warn" [matMenuTriggerFor]="menu">Eliminar ?</button>
+                                        <mat-menu #menu="matMenu">
+                                            <button mat-menu-item class="delete-cancel">Cancelar</button>
+                                            <button mat-menu-item class="delete-confirm" (click)="eliminar(element.id_Producto)">Confirmar</button>
+                                        </mat-menu>
+                                    </td>
+                                </ng-container>
+                            
+                                <tr mat-header-row *matHeaderRowDef="displayedSearchColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedSearchColumns;"></tr>
+                              </table>
+                            
+                              <mat-paginator #MatPaginator2="matPaginator" [pageSizeOptions]="[5, 10, 20]"
+                                             showFirstLastButtons
+                                             aria-label="Select page of periodic elements">
+                              </mat-paginator>
+                        </div>
+                        <div class="col-2">
+                        </div>
+                    </div>
+                </mat-tab>
+
+            </mat-tab-group>
+        </mat-card-subtitle>
+        <!-- <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+        </mat-card-actions> -->
+    </mat-card>
+
+</div>

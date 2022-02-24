@@ -1,0 +1,59 @@
+
+.content {
+  display: flex;
+  margin: 10px auto;
+  padding: 0 16px;
+  max-width: 90%;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f4f5fa;
+}
+
+.mat-card{
+  width: 90%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.row{
+  --bs-gutter-x: 0rem;
+}
+
+.mat-form-field {
+  width: 90%;
+}
+
+table {
+width: 100%;
+border-color: red !important;
+border: 2px;
+}
+.mat-raised-button.mat-primary{
+  background-color: #004153;
+  width: 100%;
+}
+.cabeza-tabla{
+  background-color: #7ac5da;
+  color: black;
+  font-size: 15px;
+}
+.mat-raised-button.mat-warn{
+  background-color: #ec55559f;
+  width: 100%;
+}
+.delete-confirm{
+  background-color: #e25c449f;
+  color: white;
+}
+.delete-confirm:hover{
+  background-color: white;
+  color: #e25c44;
+}
+.delete-cancel{
+  background-color: #2881059f;
+  color: white;
+}
+.delete-cancel:hover{
+  background-color: white;
+  color: #288105;
+}
